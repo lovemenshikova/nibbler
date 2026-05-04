@@ -202,14 +202,14 @@ void	Snake::handleAction()
 			paused = false;
 			player.changeOrientation(SOUTH);
 			break;
-		case LEFT:
-			paused = false;
-			player.changeOrientation(WEST);
-			break;
-		case RIGHT:
-			paused = false;
-			player.changeOrientation(EAST);
-			break;
+			case LEFT:
+				paused = false;
+				player.changeOrientation(EAST);
+				break;
+			case RIGHT:
+				paused = false;
+				player.changeOrientation(WEST);
+				break;
 		case PAUSE:
 			paused = true;
 			break;
