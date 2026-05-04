@@ -97,7 +97,7 @@ void	Player::spawn()
 	// Setting original orientation back
 	orientation = static_cast<t_orient>((orientation + 2) % 4);
 
-	// Snake::instance->generateNom();
+	Snake::instance->generateNom();
 }
 
 void	Player::eat()
@@ -108,8 +108,7 @@ void	Player::eat()
 	pendingNom++;
 	size++;
 	score++;
-	// Snake::instance->removeNoms();
-	// Snake::instance->generateNom((random == 0) ? 2 : 1);
+	Snake::instance->generateNom();
 }
 
 bool	Player::move()

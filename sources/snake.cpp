@@ -117,31 +117,40 @@ void	Snake::generateNom(unsigned count)
 
 void	Snake::generateNom()
 {
+	unsigned	freeBlocks;
 	unsigned	random;
-	unsigned	i;
 	t_block		block;
 
-	random = rand() % (level->height * level->width);
-	i = 0;
+	freeBlocks = 0;
 
-	while (1)
+	block.second = 0;
+	while (block.second < level->height)
 	{
-		block = { 0, 0 };
-		while (block.second < level->height)
+		block.first = 0;
+		while (block.first < level->width)
 		{
-			block.first = 0;
-			while (block.first < level->width)
-			{
-				if (level->getBlock(block) == BLOCK_NONE)
-				{
-					if (i == random)
-						return level->setBlock(block, BLOCK_NOM);
-					i++;
-				}
-				block.first++;
-			}
-			block.second++;
+			if (level->getBlock(block) == BLOCK_NONE)
+				freeBlocks++;
+			block.first++;
 		}
+		block.second++;
+	}
+
+	if (freeBlocks == 0)
+		return ;
+
+	random = rand() % freeBlocks;
+	block.second = 0;
+	while (block.second < level->height)
+	{
+		block.first = 0;
+		while (block.first < level->width)
+		{
+			if (level->getBlock(block) == BLOCK_NONE && random-- == 0)
+				return level->setBlock(block, BLOCK_NOM);
+			block.first++;
+		}
+		block.second++;
 	}
 }
 
