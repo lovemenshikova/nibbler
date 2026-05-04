@@ -17,7 +17,7 @@ snake_player.cpp \
 snake_lib_handler.cpp \
 snake_level.cpp
 
-SFML_PATH=/Users/liubov/projects/nibbler/nibbler/nibbler/SFML-3.0.2
+SFML_PATH = $(CURDIR)/SFML-3.0.2
 
 export CPP = clang++
 export CPP_FLAGS = -Wall -Wextra -Werror -std=c++17

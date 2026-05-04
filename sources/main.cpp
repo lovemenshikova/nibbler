@@ -8,7 +8,7 @@
 
 //     std::cout << "start snake\n";
 
-//     snake.loadLibrary("/Users/vellie/Downloads/nibbler/libs/sfml/library_2.so");
+//     snake.loadLibrary("libs/sfml/library_2.so");
 //     snake.loadLevel(0);
 //     return 0;
 // }
@@ -62,12 +62,11 @@ int		main()
 	// checkOptions(options);
 	std::cout << "I am in the start of main\n";
 
-	snake.loadLibrary("/Users/liubov/projects/nibbler/nibbler/nibbler/libs/sfml/library_2.so");
+	snake.loadLibrary("libs/sfml/library_2.so");
 
-	snake.loadLevel(600, 800);
+	snake.loadLevel(30, 30);
 
 	snake.launch();
 
 	return (EXIT_SUCCESS);
 }
-// setx PATH "$env:PATH;Users/liubov/projects/nibbler/nibbler/nibbler/libs/sfml/"
