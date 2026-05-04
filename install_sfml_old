@@ -1,0 +1,33 @@
+#!/bin/bash
+set -e
+
+SFML_V=3.0.2
+DEST="$HOME/Libraries/SFML/$SFML_V"
+SRC="$DEST/src"
+
+mkdir -p "$SRC"
+cd "$SRC"
+
+echo "Downloading SFML $SFML_V sources..."
+curl -L -o sfml.zip "https://github.com/SFML/SFML/archive/refs/tags/$SFML_V.zip"
+
+echo "Unzipping..."
+unzip sfml.zip
+rm sfml.zip
+
+cd "SFML-$SFML_V"
+
+echo "Configuring with CMake..."
+mkdir -p build
+cd build
+
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$DEST"
+
+echo "Building..."
+cmake --build . --config Release -- -j$(sysctl -n hw.ncpu)
+
+echo "Installing..."
+cmake --install .
+
+echo "SFML $SFML_V successfully built and installed in:"
+echo "$DEST"
